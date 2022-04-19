@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
-import LoadingMessage from './LoadingMessage';
+import LoadingMessage from '../components/LoadingMessage';
 
 class Login extends React.Component {
   constructor() {
@@ -34,10 +34,6 @@ class Login extends React.Component {
     });
 
     await createUser({ name: loginInput });
-
-    this.setState({
-      loading: false,
-    });
 
     const { history } = this.props;
     history.push('/search');
@@ -76,7 +72,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  history: PropTypes.bool.isRequired,
+  history: PropTypes.objectOf(PropTypes.shape()).isRequired,
 };
 
 export default Login;
