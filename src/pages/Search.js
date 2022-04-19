@@ -41,7 +41,7 @@ class Search extends React.Component {
       searchAlbum: response,
       searchInput: '',
     }, () => {
-      if (searchAlbum.length < 1) {
+      if (searchAlbum.length === 0) {
         this.setState({ noArtists: false });
       }
     });
@@ -74,11 +74,8 @@ class Search extends React.Component {
               Procurar
             </button>
 
-            {artist.length > 0 && (
-              <p>
-                Resultado de álbuns de:
-                {artist}
-              </p>
+            {artist.length > 0 && searchAlbum.length > 0 && (
+              <p>{`Resultado de álbuns de: ${artist}`}</p>
             )}
 
             {!loading && searchAlbum.length > 0 && (
@@ -102,7 +99,7 @@ class Search extends React.Component {
               ))
             )}
 
-            {!loading && !noArtists && (
+            {!loading && searchAlbum.length < 1 && !noArtists && (
               <p>Nenhum álbum foi encontrado</p>
             )}
           </div>
