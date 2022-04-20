@@ -35,13 +35,11 @@ class Header extends React.Component {
         {loading && <LoadingMessage />}
         {!loading && (
           <>
-            <h2
+            <div
               data-testid="header-user-name"
             >
-              Boas vindas,
-              {user}
-              !
-            </h2>
+              <h2>{user}</h2>
+            </div>
             <nav>
               <Link to="/search" data-testid="link-to-search">Pesquisa</Link>
               <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
