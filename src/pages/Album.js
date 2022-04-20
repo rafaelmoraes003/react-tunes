@@ -31,6 +31,7 @@ class Album extends React.Component {
         <Header />
         {musics.length > 0 && (
           <>
+            <img src={ musics[0].artworkUrl100 } alt={ musics[0].collectionName } />
             <h1 data-testid="album-name">{musics[0].collectionName}</h1>
             <h2 data-testid="artist-name">{musics[0].artistName}</h2>
           </>
@@ -43,6 +44,8 @@ class Album extends React.Component {
                   <MusicCard
                     musicName={ element.trackName }
                     player={ element.previewUrl }
+                    trackId={ element.trackId }
+                    obj={ element }
                   />
                 </div>
               );
