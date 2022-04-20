@@ -4,24 +4,30 @@ import { addSong } from '../services/favoriteSongsAPI';
 import LoadingMessage from './LoadingMessage';
 
 class MusicCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      // favoriteMusic: '',
       loading: false,
-      check: false,
+      check: this.shouldBeChecked(),
     };
   }
 
-  awaitAddFavorite = async () => {
-    const { check } = this.state;
+  shouldBeChecked = () => {
+    const { trackId } = this.props;
+    const array = localStorage.getItem('favorite_songs');
+    return array.includes(trackId);
+  }
 
+  handleChange = () => {
+    const { check } = this.state;
     if (check === false) {
       this.setState({ check: true });
     } else {
       this.setState({ check: false });
     }
+  }
 
+  awaitAddFavorite = async () => {
     const { obj } = this.props;
 
     this.setState({ loading: true });
@@ -29,7 +35,6 @@ class MusicCard extends React.Component {
     await addSong(obj);
 
     this.setState({
-      // favoriteMusic: response,
       loading: false,
     });
   }
@@ -57,8 +62,10 @@ class MusicCard extends React.Component {
                 data-testid={ `checkbox-music-${trackId}` }
                 id={ musicName }
                 onClick={ this.awaitAddFavorite }
+                onChange={ this.handleChange }
                 checked={ check }
               />
+              Favorita
             </label>
 
           </div>

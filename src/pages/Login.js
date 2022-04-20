@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import LoadingMessage from '../components/LoadingMessage';
+import './Login.css';
+// import logo from '../images'
 
 class Login extends React.Component {
   constructor() {

@@ -3,17 +3,30 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import LoadingMessage from '../components/LoadingMessage';
 
 class Album extends React.Component {
   constructor() {
     super();
     this.state = {
       musics: [],
+      loading: false,
+      favoriteSongs: [],
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.fetchMusic();
+
+    this.setState({ loading: true });
+
+    const favoriteSongsFetch = await getFavoriteSongs();
+
+    this.setState({
+      loading: false,
+      favoriteSongs: favoriteSongsFetch,
+    });
   }
 
   fetchMusic = async () => {
@@ -25,34 +38,40 @@ class Album extends React.Component {
   }
 
   render() {
-    const { musics } = this.state;
+    const { musics, loading, favoriteSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        {musics.length > 0 && (
+        {!loading && (
           <>
-            <img src={ musics[0].artworkUrl100 } alt={ musics[0].collectionName } />
-            <h1 data-testid="album-name">{musics[0].collectionName}</h1>
-            <h2 data-testid="artist-name">{musics[0].artistName}</h2>
+            {musics.length > 0 && (
+              <>
+                <img src={ musics[0].artworkUrl100 } alt={ musics[0].collectionName } />
+                <h1 data-testid="album-name">{musics[0].collectionName}</h1>
+                <h2 data-testid="artist-name">{musics[0].artistName}</h2>
+              </>
+            )}
+            {musics.length > 0 && (
+              musics.map((element, index) => {
+                if (index !== 0) {
+                  return (
+                    <div key={ element.artistId }>
+                      <MusicCard
+                        musicName={ element.trackName }
+                        player={ element.previewUrl }
+                        trackId={ element.trackId }
+                        obj={ element }
+                      />
+                    </div>
+                  );
+                }
+                return ''; // lint precisa de um 'else'. como ele não é necessário, retorna ''.
+              })
+            )}
           </>
         )}
-        {musics.length > 0 && (
-          musics.map((element, index) => {
-            if (index !== 0) {
-              return (
-                <div key={ element.artistId }>
-                  <MusicCard
-                    musicName={ element.trackName }
-                    player={ element.previewUrl }
-                    trackId={ element.trackId }
-                    obj={ element }
-                  />
-                </div>
-              );
-            }
-            return '';
-          })
-        )}
+        {loading && <LoadingMessage />}
+        {1 > 2 && <p>{favoriteSongs}</p>}
       </div>
     );
   }
