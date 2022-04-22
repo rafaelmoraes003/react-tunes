@@ -39,7 +39,7 @@ class Favorites extends React.Component {
         <Header />
         <h2>Músicas favoritas</h2>
         {loading && <LoadingMessage />}
-        {!loading && musics.length > 0 && (
+        {!loading && (
           <div data-testid="page-favorites">
             {musics.map((elemento) => (
               <MusicCard
