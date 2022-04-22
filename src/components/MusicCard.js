@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import LoadingMessage from './LoadingMessage';
 
 class MusicCard extends React.Component {
@@ -29,17 +29,19 @@ class MusicCard extends React.Component {
 
   awaitAddFavorite = async () => {
     const { check } = this.state;
-    const { obj } = this.props;
+    const { obj, update, shouldBeUpdated } = this.props;
 
     if (check === true) {
       this.setState({ loading: true });
-      await removeSong(obj);
+      await removeSong(obj); // REMOVE A MÚSICA
+      if (shouldBeUpdated) {
+        const data = await getFavoriteSongs();
+        update(data);
+      }
       this.setState({ loading: false });
     } else {
       this.setState({ loading: true });
-
-      await addSong(obj);
-
+      await addSong(obj); // ADICIONA A MÚSICA
       this.setState({
         loading: false,
       });
@@ -88,6 +90,8 @@ MusicCard.propTypes = {
   player: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   obj: PropTypes.objectOf(PropTypes.shape()).isRequired,
+  update: PropTypes.func.isRequired,
+  shouldBeUpdated: PropTypes.bool.isRequired,
 };
 
 export default MusicCard;
