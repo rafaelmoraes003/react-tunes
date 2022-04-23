@@ -51,53 +51,55 @@ class Search extends React.Component {
     const { searchAlbum, searchInput, loading, artist, noArtists } = this.state;
     return (
       <>
-        <div data-testid="page-search">Search</div>
+        <div data-testid="page-search" />
         <Header />
         {loading && <LoadingMessage />}
         {!loading && (
           <div className="album-container">
 
-            <input
-              type="text"
-              name="searchInput"
-              value={ searchInput }
-              data-testid="search-artist-input"
-              onChange={ this.handleChange }
-            />
+            <div className="search-div">
+              <input
+                type="text"
+                name="searchInput"
+                value={ searchInput }
+                data-testid="search-artist-input"
+                onChange={ this.handleChange }
+              />
 
-            <button
-              type="button"
-              data-testid="search-artist-button"
-              disabled={ this.enableButton() }
-              onClick={ this.fetchAlbums }
-            >
-              Procurar
-            </button>
+              <button
+                type="button"
+                data-testid="search-artist-button"
+                disabled={ this.enableButton() }
+                onClick={ this.fetchAlbums }
+              >
+                Procurar
+              </button>
+            </div>
 
             {artist.length > 0 && searchAlbum.length > 0 && (
               <p>{`Resultado de álbuns de: ${artist}`}</p>
             )}
 
-            {!loading && searchAlbum.length > 0 && (
-              searchAlbum.map((elemento) => (
-                <div className="album-div" key={ elemento.collectionId }>
-                  <div>
+            <div className="cards-container">
+              {!loading && searchAlbum.length > 0 && (
+                searchAlbum.map((elemento) => (
+                  <div className="album-div" key={ elemento.collectionId }>
                     <img
                       src={ elemento.artworkUrl100 }
                       alt={ elemento.collectionName }
                     />
+                    <h2>{ elemento.artistName }</h2>
+                    <p>{ elemento.collectionName }</p>
+                    <Link
+                      to={ `/album/${elemento.collectionId}` }
+                      data-testid={ `link-to-album-${elemento.collectionId}` }
+                    >
+                      Ir para o álbum
+                    </Link>
                   </div>
-                  <p>{ elemento.artistName }</p>
-                  <p>{ elemento.collectionName }</p>
-                  <Link
-                    to={ `/album/${elemento.collectionId}` }
-                    data-testid={ `link-to-album-${elemento.collectionId}` }
-                  >
-                    Ir para o álbum
-                  </Link>
-                </div>
-              ))
-            )}
+                ))
+              )}
+            </div>
 
             {!loading && searchAlbum.length < 1 && !noArtists && (
               <p>Nenhum álbum foi encontrado</p>

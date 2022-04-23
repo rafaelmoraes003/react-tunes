@@ -49,12 +49,16 @@ class MusicCard extends React.Component {
   }
 
   render() {
-    const { musicName, player, trackId } = this.props;
+    const { musicName, player, trackId, shouldLoadImage } = this.props;
     const { loading, check } = this.state;
     return (
       <>
         {!loading && (
           <div>
+
+            {shouldLoadImage && (
+              <img src={ shouldLoadImage } alt={ musicName } />
+            )}
 
             <h2>{musicName}</h2>
 
@@ -92,6 +96,7 @@ MusicCard.propTypes = {
   obj: PropTypes.objectOf(PropTypes.shape()).isRequired,
   update: PropTypes.func.isRequired,
   shouldBeUpdated: PropTypes.bool.isRequired,
+  shouldLoadImage: PropTypes.string.isRequired,
 };
 
 export default MusicCard;

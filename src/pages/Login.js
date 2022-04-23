@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import LoadingMessage from '../components/LoadingMessage';
+import logo from '../images/logo.svg';
 
 class Login extends React.Component {
   constructor() {
@@ -46,7 +47,10 @@ class Login extends React.Component {
         {loading && <LoadingMessage />}
         {!loading
           && (
-            <div data-testid="page-login">
+            <div className="login-container" data-testid="page-login">
+              <div className="img-div">
+                <img src={ logo } alt="Logo Trybetunes" />
+              </div>
               <form>
                 <input
                   type="text"

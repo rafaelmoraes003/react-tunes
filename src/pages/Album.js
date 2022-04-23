@@ -43,32 +43,34 @@ class Album extends React.Component {
       <div data-testid="page-album">
         <Header />
         {!loading && (
-          <>
+          <div className="album">
             {musics.length > 0 && (
-              <>
+              <div className="album-data">
                 <img src={ musics[0].artworkUrl100 } alt={ musics[0].collectionName } />
                 <h1 data-testid="album-name">{musics[0].collectionName}</h1>
                 <h2 data-testid="artist-name">{musics[0].artistName}</h2>
-              </>
+              </div>
             )}
-            {musics.length > 0 && (
-              musics.map((element, index) => {
-                if (index !== 0) {
-                  return (
-                    <div key={ element.artistId }>
-                      <MusicCard
-                        musicName={ element.trackName }
-                        player={ element.previewUrl }
-                        trackId={ element.trackId }
-                        obj={ element }
-                      />
-                    </div>
-                  );
-                }
-                return ''; // lint precisa de um 'else'. como ele não é necessário, retorna ''.
-              })
-            )}
-          </>
+            <div className="album-songs">
+              {musics.length > 0 && (
+                musics.map((element, index) => {
+                  if (index !== 0) {
+                    return (
+                      <div className="songs" key={ index }>
+                        <MusicCard
+                          musicName={ element.trackName }
+                          player={ element.previewUrl }
+                          trackId={ element.trackId }
+                          obj={ element }
+                        />
+                      </div>
+                    );
+                  }
+                  return ''; // lint precisa de um 'else'. como ele não é necessário, retorna ''.
+                })
+              )}
+            </div>
+          </div>
         )}
         {loading && <LoadingMessage />}
         {1 > 2 && <p>{favoriteSongs}</p>}

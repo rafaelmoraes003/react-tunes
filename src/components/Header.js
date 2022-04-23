@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import LoadingMessage from './LoadingMessage';
+import headerLogo from '../images/header-logo.svg';
 
 class Header extends React.Component {
   constructor() {
@@ -37,7 +38,9 @@ class Header extends React.Component {
           <>
             <div
               data-testid="header-user-name"
+              className="user-container"
             >
+              <img src={ headerLogo } alt="Logo Trybetunes" />
               <h2>{user}</h2>
             </div>
             <nav>

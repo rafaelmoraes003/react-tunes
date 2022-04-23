@@ -37,23 +37,26 @@ class Favorites extends React.Component {
     return (
       <>
         <Header />
-        <h2>Músicas favoritas</h2>
-        {loading && <LoadingMessage />}
-        {!loading && (
-          <div data-testid="page-favorites">
-            {musics.map((elemento) => (
-              <MusicCard
-                key={ elemento.trackId }
-                musicName={ elemento.trackName }
-                player={ elemento.previewUrl }
-                trackId={ elemento.trackId }
-                obj={ elemento }
-                shouldBeUpdated // TRUE
-                update={ this.updateList }
-              />
-            ))}
-          </div>
-        )}
+        <div data-testid="page-favorites" className="page-favorites">
+          <h2>Músicas favoritas</h2>
+          {loading && <LoadingMessage />}
+          {!loading && (
+            <div className="fav-songs">
+              {musics.map((elemento) => (
+                <MusicCard
+                  key={ elemento.trackId }
+                  musicName={ elemento.trackName }
+                  player={ elemento.previewUrl }
+                  trackId={ elemento.trackId }
+                  obj={ elemento }
+                  shouldBeUpdated // TRUE
+                  shouldLoadImage={ elemento.artworkUrl100 } // TRUE
+                  update={ this.updateList }
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </>
     );
   }
