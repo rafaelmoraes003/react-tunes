@@ -84,7 +84,7 @@ header nav a {
   margin-bottom: 40px;
 }
 
-form {
+.login-container form {
   padding: 94px;
   width: 697px;
   height: 314px;
@@ -97,7 +97,7 @@ form {
   border-radius: 10px;
 }
 
-form input {
+.login-container form input {
   background-color: #FFFFFF;
   border: 1px solid #E1E5EB;
   width: 100%;
@@ -106,7 +106,7 @@ form input {
   outline: none;
 }
 
-form button {
+.login-container form button {
   width: 100%;
   height: 40px;
   background-color: #003BE5;
@@ -286,4 +286,74 @@ form button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.form-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+  height: max-content;
+  padding: 20px;
+}
+
+.profile-edit-form label {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  font-weight: 500;
+}
+
+.profile-edit-form input, .profile-edit-form textarea {
+  width: 519px;
+  height: 45px;
+  padding: 12px 16px;
+  border: 1px solid #E1E5EB;
+  resize: none;
+  margin-top: 10px;
+  outline: none;
+}
+
+.profile-edit-form button {
+  width: 25%;
+  height: 35px;
+  background-color: #003BE5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  color: white;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ---------------------------------------------- */
+
+.page-profile {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.profile-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: max-content;
+  padding: 40px;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);;
+}
+
+.profile-data img {
+  clip-path: circle();
+  width: 200px;
+  margin-top: 15px;
 }

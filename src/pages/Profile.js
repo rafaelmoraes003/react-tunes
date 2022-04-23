@@ -33,12 +33,14 @@ class Profile extends React.Component {
         <Header />
         {loading && <LoadingMessage />}
         {!loading && (
-          <div className="profile-data">
-            <img data-testid="profile-image" src={ user.image } alt={ user.name } />
-            <h3>{user.name}</h3>
-            <h3>{user.email}</h3>
-            <h3>{user.description}</h3>
-            <Link to="/profile/edit">Editar perfil</Link>
+          <div className="page-profile">
+            <div className="profile-data">
+              <img data-testid="profile-image" src={ user.image } alt={ user.name } />
+              <h3>{user.name}</h3>
+              <h3>{user.email}</h3>
+              <h3>{user.description}</h3>
+              <Link to="/profile/edit">Editar perfil</Link>
+            </div>
           </div>
         )}
       </div>
