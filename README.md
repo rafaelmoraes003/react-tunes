@@ -21,6 +21,6 @@
 
 ###
 
-Faça o clone da aplicação usando o comando `git clone`. Após isso, entre na pasta do projeto utilizando o comando `cd react-tunes` e rode o comando `npm install`. Após a instalação, use o comando `npm start`.
+Faça o clone da aplicação usando o comando `git clone`. Após isso, entre na pasta do projeto utilizando o comando `cd react-tunes` e rode o comando `npm install`. Após a instalação, utilize o comando `npm start`.
 
 ###
