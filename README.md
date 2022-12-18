@@ -1,12 +1,12 @@
-<h1 align="left">Projeto React Tunes</h1>
+<h1 align="left">React Tunes</h1>
 
 ###
 
-<p align="left">Neste projeto foi usada a API do iTunes/Apple para fazer a pesquisa de álbuns e músicas de artistas que são pesquisados na página e ouvir as músicas encontradas na busca. Além disso, é possível favoritar músicas (que ficam salvas no armazenamento local) e editar o perfil do usuário.</p>
+<p align="left">In this project, the iTunes/Apple API was used to search for albums and songs by artists that are searched on the page and listen to the songs found in the search. In addition, it is possible to favorite songs (which are saved in the local storage) and edit the user profile.</p>
 
 ###
 
-<h2 align="left">Tecnologias utilizadas</h2>
+<h2 align="left">Technologies used</h2>
 
 ###
 
@@ -17,10 +17,10 @@
 
 ###
 
-<h2 align="left">Como utilizar a aplicação</h2>
+<h2 align="left">How to use the application</h2>
 
 ###
 
-Faça o clone da aplicação usando o comando `git clone`. Após isso, entre na pasta do projeto utilizando o comando `cd react-tunes` e rode o comando `npm install`. Após a instalação, utilize o comando `npm start`.
+Clone the application using the `git clone` command. After that, enter the project folder using the `cd react-tunes` command and run the `npm install` command. After installation, use the `npm start` command.
 
 ###
