@@ -2,7 +2,7 @@
 
 ###
 
-<p align="left">In this project, the iTunes/Apple API was used to search for albums and songs by artists that are searched on the page and listen to the songs found in the search. In addition, it is possible to favorite songs (which are saved in the local storage) and edit the user profile.</p>
+<p align="left">In this project, the iTunes/Apple API was used to search for albums and songs by artists that are searched on the page and listen to the songs found in the search. In addition, it is possible to favorite songs (which are saved in the local storage) and edit the user profile.</p> 
 
 ###
 
